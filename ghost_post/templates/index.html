@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{% static 'icons/favicon.ico' %}"
+        />
+        <title>Ghost Post</title>
+    </head>
+    <body>
+        <h1>Ghost Post</h1>
+        <h3>Boast about or Roast anything you'd like</h3>
+
+        <label for='postFilter'>Filter: </label>
+        <select id='postFilter' onchange="window.location.href='../' + this.value.toLowerCase()">
+            {% for filter in filters %}
+                {% if filter == active_filter %}
+                    <option selected='selected' value={{ filter }}>{{ filter }}</option>
+                {% else %}
+                    <option value={{ filter }}>{{ filter }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <h4>Posts</h4>
+        {% for post in posts %}
+        <div class="postContainer">
+            <i>{{ post.created }}</i>
+            <a href='./upvote/{{ post.id }}'>
+                <strong>Upvote </strong>
+            </a>
+            {{ post.up_votes }} | 
+            <a href='./downvote/{{ post.id }}'>
+                <strong>Downvote </strong>
+            </a>
+            {{ post.down_votes }}
+            <p>{{ post.content }}</p>
+        </div>
+        {% endfor %}
+    </body>
+</html>
