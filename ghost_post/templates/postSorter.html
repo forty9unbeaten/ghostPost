@@ -1,0 +1,14 @@
+<label for='postSorter'>Sort By: </label>
+        <select id='postSorter' 
+                onchange="window.location.href='../' + 
+                        '{{ active_filter }}/' +
+                        this.value"
+        >
+            {% for sorter in sorters %}
+                {% if sorter.value == active_sort %}
+                    <option selected='selected' value={{ sorter.value }}>{{ sorter.display }}</option>
+                {% else %}
+                    <option value={{ sorter.value }}>{{ sorter.display }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
