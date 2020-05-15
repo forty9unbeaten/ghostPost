@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{% static 'icons/favicon.ico' %}"
+        />
+        <title>Details</title>
+    </head>
+    <body>
+        <a href={% url 'home_landing' %}>Home</a>
+        <a href={% url 'new_post' %}></a>
+        <h1>Post Details</h1>
+        <h4><a href='/{{ post.id }}/upvote'>Upvote </a>----> {{ post.up_votes }}</h4>
+        <h4><a href='/{{ post.id }}/downvote'>Downvote </a>----> {{ post.down_votes }}</h4>
+        <h4><i>{{ post.created }}</i></h4>
+        <p>{{ post.content }}</p>
+        {% if can_delete %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Delete Post" />
+            </form>
+        {% endif %}
+    </body>
+</html>
