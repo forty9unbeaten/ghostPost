@@ -33,7 +33,7 @@ def homepage_view(request, post_filter, post_sort):
         posts = posts.order_by('-created')
     else:
         posts = posts.extra(
-            select={'vote_order': 'up_votes + down_votes'}).order_by('-vote_order')
+            select={'vote_order': 'up_votes - down_votes'}).order_by('-vote_order')
 
     return render(request,
                   'index.html',
