@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{% static 'icons/favicon.ico' %}"
+        />
+        <title>New Post</title>
+    </head>
+    <body>
+        <a href={% url 'home_landing' %}>Home</a>
+        <h1>New Post</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h4> Boast or Roast?</h4>
+            {% for radio in form.boast_or_roast %}
+                <div>
+                    {{ radio }}
+                </div>
+                <br>
+            {% endfor %}
+            <h4>What's on your mind?</h4>
+            {{ form.content }}
+            <br><br>
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
