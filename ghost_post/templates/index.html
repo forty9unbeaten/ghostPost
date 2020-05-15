@@ -12,34 +12,30 @@
         <title>Ghost Post</title>
     </head>
     <body>
+        <a href={% url 'home_landing' %}>Home</a>
+        <a href={% url 'new_post' %}>New Post</a>
         <h1>Ghost Post</h1>
         <h3>Boast about or Roast anything you'd like</h3>
 
-        <label for='postFilter'>Filter: </label>
-        <select id='postFilter' onchange="window.location.href='../' + this.value.toLowerCase()">
-            {% for filter in filters %}
-                {% if filter == active_filter %}
-                    <option selected='selected' value={{ filter }}>{{ filter }}</option>
-                {% else %}
-                    <option value={{ filter }}>{{ filter }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
+        <!-- Filter posts by boasts or roasts -->
+        {% include 'postFilter.html' %}
+
+        <!-- Sort by creation date or total votes -->
+        {% include 'postSorter.html' %}
 
         <h4>Posts</h4>
         {% for post in posts %}
         <div class="postContainer">
-            <i>{{ post.created }}</i>
-            <a href='./upvote/{{ post.id }}'>
-                <strong>Upvote </strong>
-            </a>
+            <i>{{ post.created }}</i> -----> 
+                <strong>Upvotes </strong>
             {{ post.up_votes }} | 
-            <a href='./downvote/{{ post.id }}'>
-                <strong>Downvote </strong>
-            </a>
+                <strong>Downvotes </strong>
             {{ post.down_votes }}
             <p>{{ post.content }}</p>
+            <a href='../../{{ post.id }}'>Details</a>
         </div>
+        <br><br>
         {% endfor %}
+
     </body>
 </html>
