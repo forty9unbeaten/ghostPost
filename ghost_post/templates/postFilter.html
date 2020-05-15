@@ -1,0 +1,14 @@
+<label for='postFilter'>Filter: </label>
+        <select id='postFilter' 
+                onchange="window.location.href='../' + 
+                        this.value + 
+                        '/{{ active_sort }}'"
+        >
+            {% for filter in filters %}
+                {% if filter.value == active_filter %}
+                    <option selected='selected' value={{ filter.value }}>{{ filter.display }}</option>
+                {% else %}
+                    <option value={{ filter.value }}>{{ filter.display }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
