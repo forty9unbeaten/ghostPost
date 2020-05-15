@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{% static 'icons/favicon.ico' %}"
+        />
+        <title>New Post Confirmation</title>
+    </head>
+    <body>
+        <a href={% url 'home_landing' %}>Home</a>
+        <h1>New Post Created!</h1>
+        <h3>IMPORTANT!</h3>
+        <h4>If you want to delete this post, hang on to and visit this web address:</h4>
+        <h3>{{ host }}/{{ id }}</h3>
+        <h4><a href={% url 'home_landing' %}>Go Home</a></h4>
+    </body>
+</html>
