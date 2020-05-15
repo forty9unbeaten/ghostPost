@@ -23,7 +23,7 @@ post_sorters = [
     },
     {
         'value': 'score',
-        'display': 'Vote Score/Total'
+        'display': 'Vote Score'
     }
 ]
 
